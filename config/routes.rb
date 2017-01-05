@@ -7,4 +7,6 @@
 
  resources :users
  resources :microposts
+ resources :relationships, only: [:create, :destroy]
 end
+

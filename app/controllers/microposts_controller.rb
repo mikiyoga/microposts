@@ -11,6 +11,7 @@ class MicropostsController < ApplicationController
     end
   end
   
+<<<<<<< HEAD
   def destroy
     @micropost = current_user.microposts.find_by(id: params[:id])
     return redirect_to root_url if @micropost.nil?
@@ -19,8 +20,14 @@ class MicropostsController < ApplicationController
     redirect_to request.referrer || root_url
   end
   
+=======
+>>>>>>> user-profile
   private
   def micropost_params
     params.require(:micropost).permit(:content)
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> user-profile
