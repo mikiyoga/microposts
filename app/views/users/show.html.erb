@@ -16,9 +16,9 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p>Mail: <%= @user.email %></p>
-          <p>Address: <%= @user.address %></p>
-          <p>Profiel: <%= @user.profile %></p>
+          <!-- <p>Mail: <%= @user.email %></p> -->
+          <!-- <p>Address: <%= @user.address %></p> -->
+          <p>Profiel: <%= @user.profile %></p> 
           <% if @user == current_user %>
             <p><%= link_to "Edit profile", edit_user_path %></p>
           <% end %>

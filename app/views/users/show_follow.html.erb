@@ -1,0 +1,5 @@
+<!-- @users = followしているuserの配列（集合collection）  -->
+<h3><%= @title %></h3>
+<% @users.each do |user| %>
+  <%= link_to user.name, user %><br>
+<% end %>

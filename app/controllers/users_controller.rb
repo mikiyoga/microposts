@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :auth_user, only: [:show, :edit,:update,:following, :followers]#追加
+  before_action :auth_user, only: [:edit,:update]#追加
   
   def show # 追加
+   @user = User.find(params[:id])
    @microposts = @user.microposts.order(created_at: :desc)
   end
   
@@ -32,14 +33,18 @@ class UsersController < ApplicationController
     end
   end
     
-  def following #追加
-     @following_users = @user.following_users
-      render 'show_follow'
+  def followings #追加
+     @title = "Followings"
+     @user = User.find(params[:id])
+     @users = @user.following_users
+     render 'show_follow'
   end
     
-  def followers　#追加
-    @followed_users = @user.followed_users
-      render 'show_follow'
+  def followers #追加
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.follower_users
+    render 'show_follow'
   end
   
   private
