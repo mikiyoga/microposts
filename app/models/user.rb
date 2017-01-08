@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-   validates :profile, presence: true, length: {maximum: 200}
-   validates :address, presence: true, length: {maximum: 150}
+   validates :profile, length: {maximum: 200}
+   validates :address, length: {maximum: 150}
                     
   has_secure_password
   has_many :microposts
@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
                                     dependent:   :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
   
+
    # 他のユーザーをフォローする
   def follow(other_user)
     following_relationships.find_or_create_by(followed_id: other_user.id)
@@ -37,6 +38,8 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.include?(other_user)
   end
+  
+
 end
 
 
